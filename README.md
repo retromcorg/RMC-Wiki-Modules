@@ -2,6 +2,6 @@
 
 List of Modules
 
-Module:RankColor V3
+Module:RankColor V:3.0
 
-Module:MC-Color V0.1
+Module:MC-Color V:1.0
