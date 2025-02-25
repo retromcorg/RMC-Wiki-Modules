@@ -30,7 +30,7 @@ Module:WikiStats2_UserInfobox : Originally created by thecow275 (Evil Gabe)
   
   .lua files contents go to the Module: Subspace in the wiki
   
-  the contents of data.lua files in the folder that is simply has the name of the Module without Module_ go to Module:<"modulename">/data
+  the contents of data.lua files go to Module:<"modulename">/data
   
   .css files contents go into Template:<"templatename">/styles.css
 
