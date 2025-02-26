@@ -1,6 +1,6 @@
 local p  =  {}
 local capiunto = require 'capiunto'
-
+local RankData = mw.loadData('Module:WikiStats2/data') --[ MAKE SURE THIS IS SET TO THE ACTUAL ONE FOR THIS MODULE ]--
 
 --[ Thecow275's WikiStats 2 1.0.0 formerly Thecow275's Profile Infobox Updater Module V1 ]
 
@@ -80,109 +80,17 @@ function p.main(frame)
                 local backgroundstyle = 'icr-WandererBodyStyle'
 
                 if userdata.groups then
-                    if string.match(userdata.groups, "wanderer") then
-                    rank = 'Wanderer'
-                    bracketstyle = 'icr-t-8 icr-data'
-                    rankstyle = 'icr-t-7 icr-data'
-                    backgroundstyle = 'icr-WandererBodyStyle'
-                    end                                               -- RANKLIST START --
-                    if string.match(userdata.groups, "admin") then  --ADMIN
-                     rank = 'Admin'
-                     bracketstyle = 'icr-t-f icr-data'
-                     rankstyle = 'icr-t-4 icr-data'
-                     backgroundstyle ='icr-AdminBodyStyle'
+                    local RankCSS = RankData[userdata.groups] --[ Warning Will break if jperms gets multiple ranks on one user support !!! ]--
+                    if not RankCSS then
+                        return 'ERROR: no data.lua,malformed data.lua or rank is missing from data.lua'
+                    else
+                        rank = RankCSS.rank
+                        bracketstyle = RankCSS.bracketstyle
+                        rankstyle = RankCSS.rankstyle
+                        backgroundstyle = RankCSS.backgroundstyle
+                        plus = RankCSS.plus
+                        plusstyle = RankCSS.plusstyle
                     end
-                  if string.match(userdata.groups, "trial") then  -- Trial Helper
-                      rank = 'Trial Helper' 
-                      bracketstyle = 'icr-t-f icr-data'
-                      rankstyle = 'icr-t-a icr-data'
-                      backgroundstyle = 'icr-TrialBodyStyle'
-                    end
-                  if string.match(userdata.groups, "moderator") then -- Moderator
-                      rank = 'Moderator'
-                      bracketstyle = 'icr-t-f icr-data'
-                      rankstyle = 'icr-t-6 icr-data'
-                      backgroundstyle = 'icr-ModeratorBodyStyle'
-                  end
-                  if string.match(userdata.groups, "helper") then -- Helper
-                      rank = 'Helper'
-                      bracketstyle = 'icr-t-f icr-data'
-                      rankstyle = 'icr-t-3 icr-data'
-                      backgroundstyle = 'icr-HelperBodyStyle'
-                  end
-                  if string.match(userdata.groups, "developer") then -- Developer
-                      rank = 'Developer'
-                      bracketstyle = 'icr-t-f icr-data'
-                      rankstyle = 'icr-t-c icr-data'
-                      backgroundstyle = 'icr-DeveloperBodyStyle'
-                  end
-                  if string.match(userdata.groups, "diamondcitizen") then -- Diamond Citizen
-                      rank = 'Diamond Citizen'
-                      bracketstyle = 'icr-t-b icr-data'
-                      rankstyle = 'icr-t-a icr-data'
-                      backgroundstyle = 'icr-DiamondCitizenBodyStyle'
-                  elseif string.match(userdata.groups, "citizen") then -- Citizen
-                      rank = 'Citizen'
-                      bracketstyle = 'icr-t-f icr-data'
-                      rankstyle = 'icr-t-a icr-data'
-                      backgroundstyle = 'icr-CitizenBodyStyle'
-                  end
-                  if string.match(userdata.groups, "trusted") then -- Gold Citizen
-                      rank = 'Gold Citizen'
-                      bracketstyle = 'icr-t-6 icr-data'
-                      rankstyle = 'icr-t-a icr-data'
-                      backgroundstyle = 'icr-TrustedBodyStyle'
-                  end
-                  if string.match(userdata.groups, "hero") then -- Hero
-                      rank = 'Hero'
-                      bracketstyle = 'icr-t-f icr-data'
-                      rankstyle = 'icr-t-2 icr-data'
-                      backgroundstyle = 'icr-HeroBodyStyle'
-                  end
-                  if string.match(userdata.groups, "legend") then -- Legend
-                      rank = 'Legend'
-                      bracketstyle = 'icr-t-f icr-data'
-                      rankstyle = 'icr-t-9 icr-data'
-                      backgroundstyle = 'icr-LegendBodyStyle'
-                  end
-                  if string.match(userdata.groups, "mystic") then -- Mystic
-                      rank = 'Mystic'
-                      bracketstyle = 'icr-t-f icr-data'
-                      rankstyle = 'icr-t-b icr-data'
-                      backgroundstyle = 'icr-MysticBodyStyle'
-                  end
-                  if string.match(userdata.groups, "donator") then -- Donator
-                      rank = 'Donator'
-                      bracketstyle = 'icr-t-8 icr-data'
-                      rankstyle = 'icr-t-c icr-data'
-                      backgroundstyle = 'icr-DonatorBodyStyle'
-                  end
-                  if string.match(userdata.groups, "donatorplus") then -- Donator+
-                      rank = 'Donator'
-                      bracketstyle = 'icr-t-8 icr-data'
-                      rankstyle = 'icr-t-c icr-data'
-                      plus = '+'
-                      backgroundstyle = 'icr-DonatorPlusBodyStyle'
-                  end
-                  if string.match(userdata.groups, "donatorplusplus") then -- Donator++
-                      rank = 'Donator'
-                      bracketstyle = 'icr-t-8 icr-data'
-                      rankstyle = 'icr-t-c icr-data'
-                      plus = '++'
-                      backgroundstyle = 'icr-DonatorPlusPlusBodyStyle'
-                  end
-                  if string.match(userdata.groups, "trooper") then -- Trooper
-                      rank = 'Trooper'
-                      bracketstyle = 'icr-t-f icr-data'
-                      rankstyle = 'icr-t-d icr-data'
-                      backgroundstyle = 'icr-TrooperBodytyle'
-                  end
-                  if string.match(userdata.groups, "infrastructure") then -- Infrastructure (not used)
-                      rank = 'Infrastructure'
-                      bracketstyle = 'icr-t-f icr-data'
-                      rankstyle = 'icr-t-6 icr-data'
-                      backgroundstyle = 'icr-InfrastructureBodyStyle'
-                  end
                                                                         -- RANKLIST END --
                   
               else
