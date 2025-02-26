@@ -84,12 +84,16 @@ function p.main(frame)
                     if not RankCSS then
                         return 'ERROR: no data.lua,malformed data.lua or rank is missing from data.lua'
                     else
+                        if rank == nil then
+                            return 'ERROR: Rank does not exist in data.lua, data.lua does not exist or is malformed'
+                        else
                         rank = RankCSS.rank
                         bracketstyle = RankCSS.bracketstyle
                         rankstyle = RankCSS.rankstyle
                         backgroundstyle = RankCSS.backgroundstyle
                         plus = RankCSS.plus
                         plusstyle = RankCSS.plusstyle
+                        end
                     end
                                                                         -- RANKLIST END --
                   
