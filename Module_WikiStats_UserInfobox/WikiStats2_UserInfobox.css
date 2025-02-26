@@ -1,22 +1,4 @@
 
-.icr-bodystyle{
-    background-color: #AAAAAA;
-    background-image: linear-gradient(160deg, #276827 , #13626d);
-    border: 4px solid #000;
-    border-radius: 25px;
-    padding: 10px;
-    margin: 5px;
-    box-shadow: 2px 2px 5px #AAAAAA;
-}
-.icr-bodystyle2{
-    background-color: #e67373;
-    background-image: linear-gradient(160deg, #12c8f5 , rgb(255, 0, 221));
-    border: 4px solid #000;
-    border-radius: 25px;
-    padding: 10px;
-    margin: 5px;
-    box-shadow: 2px 2px 5px #AAAAAA;
-}
 .icr-WandererBodyStyle{
     background-color: #e67373;
     background-image: linear-gradient(160deg, #485c48 , #3e5255);
@@ -177,26 +159,11 @@
     margin: 5px;
     box-shadow: 2px 2px 5px #AAAAAA;
 }
-.icr-right-align {
-    text-align: right;
-   }
-.icr-left-align {
-   text-align: left;
-  }
 .icr-header{
     background-color: rgba(204, 204, 255, 0.61);
 }
 .icr-title{
     background-color: rgba(204, 255, 204, 0.507);
-}
-.icr-title_easteregg{
-    background-color: rgba(204, 255, 204, 0.507);
-    background-image: linear-gradient(160deg, #572572 , #275275);
-    border: 2px solid pink;
-    border-radius: 8px;
-    padding: 4px;
-    margin: 5px;
-    box-shadow: 5px 5px 10px cyan;
 }
 .icr-data{
     text-align: center;
@@ -213,12 +180,6 @@
     box-shadow: 2px 2px 5px #223a23;
     color:rgb(0, 0, 0);
 }  
-.icr-wanderer{
-    background-color: rgb(201, 201, 201);
-}
-.icr-usernamefield{
-    color:#fff;
-}
 
 
 
