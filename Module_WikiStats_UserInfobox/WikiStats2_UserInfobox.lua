@@ -23,7 +23,7 @@ function p.main(frame)
     local args = frame.args
     local username = preprocessArg(args[1])
     local datatype = preprocessArg(args[2]) -- currently unused will be used whenever I implement more datatypes
-  --  local secretcreators = false
+
 
     if not username then -- check for blank username
         return 'USERNAME NOT VALID OR API ERROR'
@@ -41,12 +41,7 @@ function p.main(frame)
         username = 'thecow275'
     end
     
-    -- if username == 'thecow275_secret' then --[[or 'alephcake_secret' ]] 
-  --     secretcreators = true
-   --     username = 'thecow275'
-  --  else
-    --    secretcreators = false
-  --  end
+   
 
     if username then
     local data = mw.ext.externalData.getExternalData({
@@ -79,7 +74,7 @@ function p.main(frame)
                 local plus = ''
                 local backgroundstyle = 'icr-WandererBodyStyle'
 
-                if userdata.groups then
+                if userdata.groups then  --[ We Check that Userdata Has Groups set ]--
                     local RankCSS = RankData[userdata.groups] --[ Warning Will break if jperms gets multiple ranks on one user support !!! ]--
                     if not RankCSS then
                         return 'ERROR: no data.lua,malformed data.lua or rank is missing from data.lua'
@@ -106,49 +101,29 @@ function p.main(frame)
 
               local formattedrank = string.format('<span class="%s">[</span><span class="%s">%s</span><span class="%s">%s</span><span class="%s">]</span>', bracketstyle,rankstyle,rank,plusstyle,plus,bracketstyle)
               
-              local styletop = 'background:#cfc;'
+              --[[
+                    formattedrank is pretty much comprised of  bracket rank plus bracket   and bracketstyle changes the bracket color and font, 
+                    rankstyle does the same for the rank name and plusstyle does the same for the + in + and ++ ranks
 
-              --if username == 'JohnyMuffin' then  --[[ Johny Muffin Easter EGG]]
-             --   styletop = 'background:#5555FF; color:#FFFFFF;'
-             -- else
-             -- styletop = 'background:#cfc;'
-             -- end
+              ]]--
+              
+              
 
 
                 if datatype == 'infobox' then
-                 --   local bypassluajank = 'icr-title'
-                   -- if secretcreators then
-                   --    bypassluajank = 'icr-title_easteregg'
-                  --  else
-                   --    bypassluajank = 'icr-title'
-                    --end
+                
                     
-                        local args = frame:getParent().args
+                        
                       
                         local retval = capiunto.create({
                            
                             top = username,
-                            bodyClass = backgroundstyle, -- DO NOT EDIT HERE SEE THE if userdate.groups section for the values (Hint: they are css classes)
-                            --[[ AUTOMATE THIS WITH A LOCAL YOU CHANGE ABOVE IN THE if userdata.groups section 
+                            bodyClass = backgroundstyle, -- DO NOT EDIT HERE
                             
-                            -- Add rank specific gradients to infobox_capiunto_recode.css
-
-                            -- make sure to have a default value for the bodyClass to prevent errors and page breakage
-
-                            -- { Custom Gradient Colors are being worked on by alephcake}
-
-                            --< THANK YOU alephcake for providing some of the color stuff for the infobox stuff >
-
-                            --maybe we should add a easter egg when you input username as alephcake
-                            
-                            --fix Johny Muffin easter egg <-- REMOVED
-                            --]]
                             
                             topClass = 'icr-title'
                             
-                            --bodyStyle = 'background-color: #e67373; background-image: linear-gradient(160deg, #12c8f5 , rgb(255, 0, 221)); border: 2px solid #000; border-radius: 25px; padding: 10px; margin: 5px; box-shadow: 2px 2px 5px #AAAAAA;',
-                            --topStyle = styletop
-
+                            
                             
                         })
                         
@@ -157,20 +132,12 @@ function p.main(frame)
                         --:addImage( args.image, args.caption )
                         retval:addImage('https://minotar.net/armor/bust/'..username..'.png','','icr-data icr-transparency2')
                         
-                        --:addHeader(username, 'icr-title')
-                        --retval:addRow('','')
-                        
-                        --:addWikitext('File:https://minotar.net/armor/bust'..username..'.png')
-                        
                         retval:addRow( 'Username', username, '', 'icr-transparency1 icr-data' )
                         retval:addRow( 'UUID', data.uuid,'', 'icr-data icr-transparency2' )
                         retval:addHeader('General Stats', 'icr-header')
-                        --if rank == 'Wanderer' then
-                        --    retval:addRow('Rank', formattedrank, 'icr-w', 'icr-wanderer')
-                        --else
                         
                         retval:addRow( 'Rank', formattedrank, '', 'icr-data icr-transparency1' )
-                        --end
+                        
                         
                         retval:addRow( 'Balance', string.format("%.2f", userdata.balance),'','icr-data icr-transparency2')
                         retval:addHeader( 'Miscellaneous Stats', 'icr-header' )
